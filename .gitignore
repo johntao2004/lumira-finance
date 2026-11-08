@@ -1,0 +1,9 @@
+.runtime/
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+plugins/**/dist/
+plugins/**/target/
+plugins/**/node_modules/

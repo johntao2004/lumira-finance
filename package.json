@@ -1,0 +1,11 @@
+{
+  "name": "lumira-finance",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": "24.x" },
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "workspace:prepare": "node scripts/prepare-workspace.mjs"
+  }
+}
