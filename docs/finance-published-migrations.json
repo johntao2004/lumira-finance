@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Finance migrations already applied in the dedicated QA environment; preserve exact bytes and published identities. This does not replace SDK Flyway validation or establish production upgrade acceptance.",
+  "migrations": [
+    {
+      "version": 1,
+      "file": "V1__plugin_initialization.sql",
+      "sha256": "2eefbc962034efbb95eb764c5ab3a47ee020fc83a9b3923aeaf2745d0a6f87f2",
+      "flywayChecksum": 76939058
+    },
+    {
+      "version": 2,
+      "file": "V2__audit_scope_cursor_index.sql",
+      "sha256": "f4f6fee3ebef3914fa5664089c7f3fec0d49aaacfa7dfcc53434763c83e7c4b5",
+      "flywayChecksum": -364904895
+    },
+    {
+      "version": 3,
+      "file": "V3__v4_precision_and_year_guard.sql",
+      "sha256": "8c45aabd28a48532581a98057d2a7a8c18b1633554c28d2e222cd21e0d7d3c55",
+      "flywayChecksum": -982797643
+    },
+    {
+      "version": 4,
+      "file": "V4__source_events_and_outbox.sql",
+      "sha256": "ed93ed5ca75c5af5d1db9da774a32523d11cb86f129af34a7c4b05b38a101d38",
+      "flywayChecksum": 1334566992
+    },
+    {
+      "version": 5,
+      "file": "V5__cash_scope_review.sql",
+      "sha256": "8b313af7dbf14d4060420b645c5d64644df201e4a4ef4d81bec5bcde9b28972e",
+      "flywayChecksum": -225670260
+    },
+    {
+      "version": 6,
+      "file": "V6__cash_movement_registration.sql",
+      "sha256": "3cc43771419e327647be4ad3e04512bd13ab0ed4aed7f9c459798a1d205a9629",
+      "flywayChecksum": -2072822999
+    },
+    {
+      "version": 7,
+      "file": "V7__cash_match_corrections.sql",
+      "sha256": "4b86d920d8ad9d3bb918a59d0e6d5fdc9358cbf5885fce7df333a15c9838cd99",
+      "flywayChecksum": -1410943516
+    },
+    {
+      "version": 8,
+      "file": "V8__cash_classification_policies.sql",
+      "sha256": "f0f6ad65e11e75d2b4ff36ebd3fc00ea8ae1ed07da7e1d829a13da9b0d5a9460",
+      "flywayChecksum": -1933253923
+    },
+    {
+      "version": 9,
+      "file": "V9__cash_source_reviews.sql",
+      "sha256": "bd5ccfba44b3a4c9a86552fb4f5d346cabd5d94d553c16b384f401472d83c9ac",
+      "flywayChecksum": 707592962
+    },
+    {
+      "version": 10,
+      "file": "V10__cash_allocations.sql",
+      "sha256": "fd5e4ed27317ebe618f539a43604b16621408f5410944f56ffbc7a8298ff47f3",
+      "flywayChecksum": -1032479335
+    },
+    {
+      "version": 11,
+      "file": "V11__journal_list_pages.sql",
+      "sha256": "5347520e7266aa88b3ca33f949c5d3d93401d1026e2ec8b740d34c67075371c4",
+      "flywayChecksum": -2058104627
+    },
+    {
+      "version": 12,
+      "file": "V12__person_directory.sql",
+      "sha256": "57bf48cec65fdfc6b9d8a3e17296e1100f17f8740c49531fa49a8a0bb3ec417b",
+      "flywayChecksum": -1986669112
+    },
+    {
+      "version": 13,
+      "file": "V13__person_directory_resource_index.sql",
+      "sha256": "841ea65882889a2182a521f897a94d3954c83e594c6579c79dcb207da1307d5a",
+      "flywayChecksum": 1907736039
+    },
+    {
+      "version": 14,
+      "file": "V14__journal_person_protocol.sql",
+      "sha256": "25bcf90b24f901203759715171b0b554bcd20d7c74dc88f45a920a04c66b4446",
+      "flywayChecksum": -1179606889
+    },
+    {
+      "version": 15,
+      "file": "V15__evidence_usage.sql",
+      "sha256": "653ca8bcce4959f54bea8a5f2acfeafd271b1f39237de5557e3f439f85b291ab",
+      "flywayChecksum": -2063881715
+    },
+    {
+      "version": 16,
+      "file": "V16__profit_closing_person_protocol.sql",
+      "sha256": "edfe270b2cbe059cc47231835a6cb2fbb78a8ef4da9d2823e9f538d62412918a",
+      "flywayChecksum": 1810034132
+    },
+    {
+      "version": 17,
+      "file": "V17__counterparty_master_data.sql",
+      "sha256": "5b718e292d8b2a8f3506792d5039d223f438ef89dc3ef501f2df40dad85c962f",
+      "flywayChecksum": 1458407818
+    },
+    {
+      "version": 18,
+      "file": "V18__payables_accounting_confirmation.sql",
+      "sha256": "63a7b9650ef32b5008a41df3eff308513e0ea40fee1b4901fe9ddb2bdd725a27",
+      "flywayChecksum": -460828620
+    },
+    {
+      "version": 19,
+      "file": "V19__tax_entity_registry.sql",
+      "sha256": "bf32e634e3610dde4f34c945c6825f46c399d4256016ee0ee81a4e454e3206a2",
+      "flywayChecksum": 747059142
+    },
+    {
+      "version": 20,
+      "file": "V20__receivables_ar01_ar02.sql",
+      "sha256": "4c7dd067a151bbbd97efea76d9711f900438483447df256b5ca81c3af1b12253",
+      "flywayChecksum": 1040863094
+    },
+    {
+      "version": 21,
+      "file": "V21__assets_subledger.sql",
+      "sha256": "82494aad4b90a845001d4ab052767dfed857314931b4eeec60fdaa42ca75bcd6",
+      "flywayChecksum": -1254616966
+    },
+    {
+      "version": 22,
+      "file": "V22__payroll_candidate.sql",
+      "sha256": "ce393f31089f71cf53e3436213ba1b7db26827df5d13078621edb3afc93e9db5",
+      "flywayChecksum": -1870906800
+    },
+    {
+      "version": 23,
+      "file": "V23__v4_runtime_producers_and_decisions.sql",
+      "sha256": "2bc4d2d83bfc5a5794ca91fed795e1b93f5328d5cc84932258f5270034b41419",
+      "flywayChecksum": -1126789834
+    },
+    {
+      "version": 24,
+      "file": "V24__tax_obligations_archive_and_report_drafts.sql",
+      "sha256": "51fe0161f9a50626ccfcd7c9f6346319c491f57eb2388a9566a7f2fa8c5c81c2",
+      "flywayChecksum": 131981076
+    },
+    {
+      "version": 25,
+      "file": "V25__ap02_settlement_tax_worksheets_and_payroll_restatement.sql",
+      "sha256": "ce97c2234e3aa6beac6b5aaef6499a8eb73d630b5cc7afbdc9710f0ce60f42b8",
+      "flywayChecksum": 7256719
+    },
+    {
+      "version": 26,
+      "file": "V26__org_policy_period_fx.sql",
+      "sha256": "dac4bc66f0ad03abe06ff95080b9b5d855af1062c233f158d9d3cc0dd92ce0d4",
+      "flywayChecksum": 1367523154
+    },
+    {
+      "version": 27,
+      "file": "V27__iam_ops_governance.sql",
+      "sha256": "d27172c1e05d01c36f88ddee5451dfaef8367e73da6fea3376ce2b155b0cecf8",
+      "flywayChecksum": 424942622
+    },
+    {
+      "version": 28,
+      "file": "V28__dimensions_budget_control.sql",
+      "sha256": "508752ff564f07203bfe4f11052e6a8f15190a4089f67105dfad2949dec395ae",
+      "flywayChecksum": -1428654693
+    },
+    {
+      "version": 29,
+      "file": "V29__evidence_fapiao_lifecycle.sql",
+      "sha256": "8c80cc38f4758607484261e13e92c9033fb9d48c75631ebc0b1e2456faf12b13",
+      "flywayChecksum": 2112950121
+    },
+    {
+      "version": 30,
+      "file": "V30__expense_advance_reimbursement.sql",
+      "sha256": "c378748fdbb7628e732859d3e656e2f220dfa410c136aa93af37d32d60664bd7",
+      "flywayChecksum": 361294504
+    },
+    {
+      "version": 31,
+      "file": "V31__subledger_ap_ar_extensions.sql",
+      "sha256": "20387285a24495e33262453ddc30aa6064a5b000debd84fbc2d77bb0d9e6e9ff",
+      "flywayChecksum": 1905186347
+    },
+    {
+      "version": 32,
+      "file": "V32__treasury_cash_bank_management.sql",
+      "sha256": "7164497c067a5184bea2893290a6be127dcb58210b8663a8e880a256a0d734dc",
+      "flywayChecksum": -1932968252
+    },
+    {
+      "version": 33,
+      "file": "V33__inventory_and_asset_subledgers.sql",
+      "sha256": "33ee9932013c9ff5a0c41c267d4865401187b19bb0b47f74018450c1b8fa266d",
+      "flywayChecksum": 1645901332
+    },
+    {
+      "version": 34,
+      "file": "V34__gl_yearend_lifecycle.sql",
+      "sha256": "28bcb528c421f992e6ff78a9501b0c28cd24db55931883b7ed19aac021b207eb",
+      "flywayChecksum": -998282790
+    },
+    {
+      "version": 35,
+      "file": "V35__payroll_tax_extensions.sql",
+      "sha256": "4935dca60b58321833f7330036dbd7a1d333159b52595abfd10aebe7fc6a463f",
+      "flywayChecksum": -752636906
+    },
+    {
+      "version": 36,
+      "file": "V36__statutory_reports_packages.sql",
+      "sha256": "f23a5da6a2ee1208895ed7a32ac6a3a7d96d2534fb5f61e864d0148dbcd743dc",
+      "flywayChecksum": 1326637074
+    },
+    {
+      "version": 37,
+      "file": "V37__archive_lifecycle_integration_ai.sql",
+      "sha256": "1f922ff8c74ed32c77f214fcec2c4309d6d756280942f187831b3c41b8927253",
+      "flywayChecksum": 1954510975
+    }
+  ]
+}

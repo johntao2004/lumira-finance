@@ -1,0 +1,2 @@
+# Published finance migration hashes cover their exact bytes, including line endings.
+plugins/finance/migrations/*.sql -text

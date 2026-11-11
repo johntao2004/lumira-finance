@@ -1,0 +1,5960 @@
+{
+  "formatVersion": 2,
+  "id": "finance",
+  "name": "企业财务",
+  "version": "0.24.2",
+  "sdkVersion": "1",
+  "entryClass": "com.lumira.finance.FinancePlugin",
+  "backend": "backend/plugin.jar",
+  "frontend": "frontend/plugin.js",
+  "dependencies": [
+    {
+      "id": "platform",
+      "version": "1.0.0"
+    },
+    {
+      "id": "identity",
+      "version": "1.0.0"
+    }
+  ],
+  "permissions": [
+    "platform:finance:access",
+    "platform:finance:read",
+    "platform:finance:manage",
+    "platform:finance:create",
+    "platform:finance:approve",
+    "platform:finance:post",
+    "platform:finance:close",
+    "platform:finance:export",
+    "platform:finance:person-read",
+    "platform:finance:person-propose",
+    "platform:finance:person-confirm"
+  ],
+  "permissionGroups": [
+    {
+      "id": "finance",
+      "title": "企业财务权限",
+      "permissions": [
+        {
+          "code": "platform:finance:access",
+          "label": "访问财务工作台",
+          "requires": []
+        },
+        {
+          "code": "platform:finance:read",
+          "label": "读取授权账套",
+          "requires": [
+            "platform:finance:access"
+          ]
+        },
+        {
+          "code": "platform:finance:manage",
+          "label": "管理账套及成员",
+          "requires": [
+            "platform:finance:access"
+          ]
+        },
+        {
+          "code": "platform:finance:create",
+          "label": "制单及提交",
+          "requires": [
+            "platform:finance:access"
+          ]
+        },
+        {
+          "code": "platform:finance:approve",
+          "label": "独立审签",
+          "requires": [
+            "platform:finance:access"
+          ]
+        },
+        {
+          "code": "platform:finance:post",
+          "label": "正式记账",
+          "requires": [
+            "platform:finance:access"
+          ]
+        },
+        {
+          "code": "platform:finance:close",
+          "label": "期间及年度结账",
+          "requires": [
+            "platform:finance:access"
+          ]
+        },
+        {
+          "code": "platform:finance:export",
+          "label": "导出授权财务资料",
+          "requires": [
+            "platform:finance:access"
+          ]
+        },
+        {
+          "code": "platform:finance:person-read",
+          "label": "读取租户人员目录",
+          "requires": [
+            "platform:finance:access"
+          ]
+        },
+        {
+          "code": "platform:finance:person-propose",
+          "label": "提出人员账号绑定",
+          "requires": [
+            "platform:finance:access"
+          ]
+        },
+        {
+          "code": "platform:finance:person-confirm",
+          "label": "独立确认人员账号绑定",
+          "requires": [
+            "platform:finance:access"
+          ]
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "finance-workbench",
+      "label": "financeWorkbench",
+      "permission": "platform:finance:access",
+      "operations": {
+        "read": "platform:finance:read",
+        "manage": "platform:finance:manage",
+        "create": "platform:finance:create",
+        "approve": "platform:finance:approve",
+        "post": "platform:finance:post",
+        "close": "platform:finance:close",
+        "export": "platform:finance:export",
+        "person-read": "platform:finance:person-read",
+        "person-propose": "platform:finance:person-propose",
+        "person-confirm": "platform:finance:person-confirm"
+      },
+      "scopedOperations": [
+        "read",
+        "manage",
+        "create",
+        "approve",
+        "post",
+        "close",
+        "export",
+        "person-read",
+        "person-propose",
+        "person-confirm"
+      ],
+      "group": "overview",
+      "order": 20,
+      "global": false
+    }
+  ],
+  "apiRules": [
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/members",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/members",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/tax-profile",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-profile",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/periods",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/accounts",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/journals",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/journals/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/journals/*/documents",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/trial-balance",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/ledger",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/reports",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/accounts",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/journals",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/finance/v1/books/*/years/*/journals/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/journals/*/submit",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/journals/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/journals/*/post",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:post"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/journals/*/reversals",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/journals/*/documents",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/periods/*/close-preview",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:close"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/periods/*/close",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:close"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/year-close-plans",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:close"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/year-close-plans/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/year-close-plans/*/execute",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:close"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/year-close-plans",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/year-close-plans/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/closing-drafts",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/journals/*/withdraw",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/journals/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/journals/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/originals",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/originals",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/originals/*/content",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/audit-events",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/source-events",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/source-events/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/source-events",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/outbox",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/outbox/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/outbox/*/retry",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/outbox/rebuild-projection",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/journal-projection",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/scope-revisions",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/scope-revisions/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/scope-revisions",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/scope-revisions/*/submit",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/scope-revisions/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/scope-revisions/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/movement-registrations/catalog",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/movement-registrations/eligible-cash-legs",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/movement-registrations",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/movement-registrations/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/movement-registrations",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/movement-registrations/*/void",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/match-corrections",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/match-corrections/eligible-cash-legs",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/match-corrections/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/match-corrections",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/match-corrections/*/submit",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/match-corrections/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/match-corrections/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/match-corrections/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/match-corrections/*/withdrawal-requests",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/match-corrections/*/withdrawal-requests",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/match-corrections/*/withdrawal-requests/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/match-corrections/*/withdrawal-requests/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/movement-registrations/*/effective-match",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/classification-policies/catalog",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/classification-policies",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/classification-policies/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/classification-policies",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/classification-policies/*/submit",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/classification-policies/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/classification-policies/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/classification-policies/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/classification-policies/*/retirement-requests",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/classification-policies/*/retirement-requests",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/classification-policies/*/retirement-requests/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/classification-policies/*/retirement-requests/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/classification-policies/*/retirement-requests/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/source-reviews/eligible-effective-claims",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/source-reviews",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/source-reviews/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/source-reviews",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/source-reviews/*/submit",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/source-reviews/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/source-reviews/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/source-reviews/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/source-reviews/*/release-requests",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/source-reviews/*/release-requests",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/source-reviews/*/release-requests/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/source-reviews/*/release-requests/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/source-reviews/*/release-requests/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/allocations/eligible-source-reviews",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/allocations",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/allocations/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/allocations",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/allocations/*/submit",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/allocations/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/allocations/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/allocations/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/allocations/*/release-requests",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/allocations/*/release-requests",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/allocations/*/release-requests/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/allocations/*/release-requests/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/allocations/*/release-requests/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/allocations/replacement-requests",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/allocations/*/replacement-requests",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/allocations/replacement-requests/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/allocations/replacement-requests/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/allocations/replacement-requests/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/cashflow/ledger-coverage-preview",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/journal-pages",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/ledger-pages",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/tenants/*/person-directory/configuration",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:person-read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/tenants/*/person-directory/persons",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:person-read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/tenants/*/person-directory/persons/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:person-read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/tenants/*/person-directory/proposals",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:person-read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/tenants/*/person-directory/proposals/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:person-read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/tenants/*/person-directory/readiness",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:person-read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/tenants/*/person-directory/proposals",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:person-propose"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/tenants/*/person-directory/proposals/*/confirm",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:person-confirm"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/tenants/*/person-directory/proposals/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:person-propose"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/journal-person-sod",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/journal-person-sod/activation-requests",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/journal-person-sod/activation-requests/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/journal-person-sod/activation-requests/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/journal-person-sod/activation-requests/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/journal-person-sod/activation-requests/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/journals/*/person-sod",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/journals/*/person-approvals",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/journals/*/person-post",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:post"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/journals/*/terminate-draft",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:approve",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/catalog",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/documents",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/documents",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/documents/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/documents/*/review-proposals",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/documents/*/review-proposals/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/documents/*/review-proposals/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/documents/*/review-proposals/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/documents/*/review-proposals/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/allocations",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/allocations",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/allocations/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/allocations/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/allocations/*/submit",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/allocations/*/confirm",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/allocations/*/withdraw",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/allocations/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/allocations/*/admin-terminate",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/allocations/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/allocations/*/reverse-requests",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/allocations/*/reverse-requests/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/allocations/*/reverse-requests/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/allocations/*/reverse-requests/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/evidence-usage/allocations/*/reverse-requests/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/profit-closing/preview",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/profit-closing/runs",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/profit-closing/runs",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/profit-closing/runs/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/profit-closing/journals/*/producer",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/profit-closing/runs/*/submit",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/profit-closing/runs/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/profit-closing/runs/*/post",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:post"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/profit-closing/runs/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/profit-closing/runs/*/withdraw",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/profit-closing/runs/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/profit-closing/runs/*/admin-terminate",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/carry-readiness",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/carry-readiness/accounts",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/counterparties",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/counterparties/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/counterparties/*/revisions",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/counterparties/*/revisions/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/counterparties",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/counterparties/*/revision-proposals",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/counterparties/*/revisions/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/counterparties/*/revisions/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/counterparties/*/revisions/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/catalog",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/eligible-parents",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/accounting-bases",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/accounting-bases/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/expense-payables",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/expense-payables/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/journals/*/producer",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/open-items",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/open-items/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/reconciliation",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/accounting-bases",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/accounting-bases/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/accounting-bases/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/accounting-bases/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/expense-payables",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/expense-payables/*/full-reversal",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/expense-payables/*/submit",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/expense-payables/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/expense-payables/*/post",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:post"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/expense-payables/*/withdraw",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/expense-payables/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/expense-payables/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payables-ap01/expense-payables/*/admin-terminate",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/tax-entities/catalog",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/tax-entities",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/tax-entities/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/tax-entities/*/revisions/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-entities",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-entities/*/revision-proposals",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-entities/*/revisions/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-entities/*/revisions/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-entities/*/revisions/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/receivables/decisions",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/receivables/decisions",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/receivables/decisions/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/receivables",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/receivables/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/receivables",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/receivables/*/submit",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/receivables/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/receivables/*/post",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:post"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/receivables/*/withdraw",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/receivables/*/reject",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/receivables/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/assets/quotas",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/assets/quotas",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/assets/quotas/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/assets/cards",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/assets/plans/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/assets/reconciliation",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/assets/acquisitions",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/assets/depreciations",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/assets/estimate-changes",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/assets/disposals",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/assets/reversals",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/assets/depreciation-corrections",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/assets/plans/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/assets/plans/*/post",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:post"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/assets/plans/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/payroll/*/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/payroll/*/*/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/payroll/*/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/payroll/*/*/employees",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/payroll/*/*/rule-packs",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/payroll/*/*/fact-evidences",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/payroll/*/*/fact-evidences/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/payroll/*/*/*/actions",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/payroll/*/*/*/facts",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:post"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/tax-obligations",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-obligations",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-obligations/book-bindings",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-obligations/book-bindings/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-obligations/*/declarations/*/review",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-obligations/*/declarations/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-obligations/*/declarations/*/handoff",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:post"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-obligations/*/declarations/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-obligations/*/declarations/*/reconcile-receipt",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/archive-exports",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:export"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/archive-exports/preflights",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:export"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/archive-exports/requests",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create",
+        "platform:finance:export"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/archive-exports/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:export"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/archive-exports/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve",
+        "platform:finance:export"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/archive-exports/*/generate",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:export"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/archive-exports/*/download",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:export"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/archive-exports/*/receipt",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:export"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/report-drafts/mappings",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/report-drafts/mappings",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/report-drafts/mappings/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/report-drafts/evaluate",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/payable-settlements",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payable-settlements/bases",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payable-settlements/bases/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payable-settlements/orders",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payable-settlements/orders/*/submit",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payable-settlements/orders/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payable-settlements/orders/*/post",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:post"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/payable-settlements/orders/*/cancel",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/tax-obligations/worksheets",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-obligations/worksheets",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-obligations/worksheets/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/payroll/*/*/restatements",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/payroll/*/*/restatements",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/payroll/*/*/restatements/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/entities/*/branches",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/entities/*/branches",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/entities/*/lifecycle",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/entities/*/lifecycle",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/entities/*/standard-eligibility",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/policy-versions",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/policy-versions/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/multi-date/validate",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/periods/*/reopen",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:close"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/fx/rate-snapshots",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/fx/translate-line",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/fx-revaluations",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/tax-calendars/resolve-obligations",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/conversion-bridges",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/tax-bureaus",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/currencies",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/invitations",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/invitations/accept",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/attested-sources",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/persons/*/offboard",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/iam-ops/persons/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/data-scopes",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/export-requests",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:export"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/iam-ops/sod-matrix",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/approval-tasks",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/approval-tasks/*/decide",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/delegations",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/emergency-grants",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/emergency-grants/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/backup-manifests",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/joint-drills",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/rollback-ledger",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/support-tickets",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/support-tickets/*/timeline",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/support-tickets/*/status",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/diagnostic-grants",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/iam-ops/diagnostic-grants/*/revoke",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/budget-dimensions/account-rule",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/account-rule",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/account-deactivation",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/account-approval",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/counterparty-bank",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/counterparty-bank/review",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/counterparty-bank/decide",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/counterparty-identity-history",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/framework-contract",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/department",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/project",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/cost-center",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/contract-dimension",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/allocation-rule",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/allocation-execute",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/budget-version",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/budget-version/approval",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/budget-adjustment",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/budget/reserve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/budget/consume",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/budget/release",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/budget/rollback-consume",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/budget-dimensions/budget/control-ledger",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/budget-dimensions/budget/forecast-snapshot",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/completeness",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/verify/xml",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/verify/ocr-cross-check",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/quota/init",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/quota/reserve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/quota/commit",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/quota/release",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/graph/nodes",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/graph/edges",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/exceptions",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/exceptions/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/fapiao",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/issuance",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/issuance/*/review-buyer",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/issuance/*/confirm",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/red-notices",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/red-notices/*/confirm",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/red-notices/*/link-credit",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/evidence-fapiao/completeness/*/export-index",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/graph/trace",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/evidence-fapiao/fapiao/*/reconcile",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/expense/policies",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/expense/policies",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/expense/policies/*/activate",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:manage"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/expense/exceptions",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/expense/exceptions/*/decision",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/expense/requisitions",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/expense/requisitions",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/expense/requisitions/*/actions",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/expense/advances",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/expense/advances",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/expense/advances/*/actions",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/expense/advances/*/refunds",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/expense/claims",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/expense/claims",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/expense/claims/*/actions",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/expense/claims/*/disburse",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/expense/payables",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/expense/claims/*/reverse",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ap/po",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ap/po/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ap/acceptance",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ap/provisional",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ap/provisional/settle",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ar/contract-assets",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ar/contract-assets/*/reclassify",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ar/variable-consideration",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ar/ecl",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ar/allowance",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ap/po/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ap/acceptance/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ap/provisional/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ar/contract-assets/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ar/variable-consideration/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ar/variable-consideration/*/revise",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ar/multi-year-sync",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ar/ecl/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/years/*/subledger-ext/ar/allowance/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/treasury/accounts",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/treasury/accounts/*/review",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/treasury/numbering-policies",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/treasury/numbering-policies/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/treasury/orders",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/treasury/orders/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/treasury/payment-instructions",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/treasury/payment-instructions/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/treasury/payment-instructions/*/dispatch",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/treasury/payment-instructions/*/settle",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/treasury/payment-instructions/*/fail",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/treasury/statement-batches/import",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/treasury/statement-lines/review-match",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/treasury/reconciliations",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/treasury/reconciliations/*/confirm",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/treasury/forecasts",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/inventory/warehouses",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/inventory/items",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/inventory/movements",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/inventory/stocktake",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/inventory/stocktake/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/inventory/impairment/evaluate",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/assets/cip/projects",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/assets/cip/capitalize",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/assets/rd/capitalize",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/assets/impairment",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/inventory/depreciation/preview",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/inventory/costing/fifo-preview",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/yearend/books/*/years/*/cutover",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/yearend/books/*/cutover/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/yearend/books/*/cutover/*/lock",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:close"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/yearend/books/*/rule-templates",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/yearend/books/*/rule-templates/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/yearend/books/*/review-policies",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/yearend/books/*/review-policies/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/yearend/books/*/corrections",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/yearend/books/*/years/*/periods/*/close-preview",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:close"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/yearend/books/*/period-close/*/sign-off",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/yearend/books/*/carry-batches/preview",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/yearend/books/*/carry-batches/*/commit",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/payroll-bonus/batches",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/payroll-bonus/batches/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/payroll-bonus/batches/*/review",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/payroll-bonus/batches/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/payroll-bonus/batches/*/lock",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:close"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/payroll-labor/batches",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/payroll-labor/batches/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/payroll-labor/batches/*/review",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/payroll-labor/batches/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/payroll-labor/batches/*/lock",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:close"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-policy/packs",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/books/*/tax-policy/packs/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-policy/evaluate-cit",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-calendar/deadlines",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-forms/check-schedules",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/books/*/tax-forms/locks",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:close"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/statutory/teaching-guide/query",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/statutory/packages",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/statutory/packages/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/statutory/packages/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/statutory/packages/*/publish",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/statutory/packages/*/worksheets",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/statutory/packages/*/worksheets/*/approve",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:approve"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/statutory/kpi/evaluate",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/statutory/calendar/generate",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/statutory/consolidation/scopes",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/statutory/consolidation/worksheet",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/archive-gov/records",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/archive-gov/records/*",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/archive-gov/completeness-check",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/archive-gov/borrow",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/archive-gov/return",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/archive-gov/dispose",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/import-batches/dry-run",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/erp-events/ingest",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "GET",
+      "path": "/api/finance/v1/schedules/calculate-month-end",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read"
+      ],
+      "global": false,
+      "publicAccess": false,
+      "previewReadOnly": true
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/ai/ocr-suggest",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/ai/inquiry/explain",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/ai/plans/execute",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/offline-leases/issue",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    },
+    {
+      "method": "POST",
+      "path": "/api/finance/v1/offline-leases/sync-envelope",
+      "authorities": [],
+      "allAuthorities": [
+        "platform:finance:access",
+        "platform:finance:read",
+        "platform:finance:create"
+      ],
+      "global": false,
+      "publicAccess": false
+    }
+  ],
+  "dataSets": []
+}

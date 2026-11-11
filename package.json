@@ -1,11 +1,15 @@
 {
   "name": "lumira-finance",
-  "version": "0.1.0",
+  "version": "0.24.2",
   "private": true,
   "type": "module",
-  "engines": { "node": "24.x" },
+  "engines": {
+    "node": "24.x"
+  },
   "packageManager": "pnpm@10.33.0",
   "scripts": {
-    "workspace:prepare": "node scripts/prepare-workspace.mjs"
+    "workspace:prepare": "node scripts/prepare-workspace.mjs",
+    "test:finance": "node scripts/test-finance-domain.mjs",
+    "test:person-bootstrap": "node --test --test-concurrency=1 scripts/bootstrap-finance-person-directory.test.mjs"
   }
 }

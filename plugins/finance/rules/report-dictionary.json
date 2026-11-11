@@ -1,0 +1,2311 @@
+{
+  "version": "0.1.0",
+  "status": "UNREVIEWED",
+  "publicationAllowed": false,
+  "rows": [
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A01",
+      "label": "货币资金",
+      "specification": "B(库存现金+银行存款+其他货币资金)\n银行账号明细含受限属性；受限资金是否在货币资金列报与是否属于现金流现金范围分别判断",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A02",
+      "label": "交易性金融资产",
+      "specification": "V(FVTPL金融资产且符合流动列报)\n预期持有及到期均超过一年部分去A20",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A03",
+      "label": "衍生金融资产",
+      "specification": "衍生工具资产方向公允价值\n金融工具明细，依法可抵销才净额",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A04",
+      "label": "应收票据",
+      "specification": "摊余成本应收票据B−对应坏账准备C\nFVOCI票据去A06",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A05",
+      "label": "应收账款",
+      "specification": "经营性无条件应收B经明细重分类−对应坏账准备\n不能把合同资产混入；贷方预收性质转L06/L07等适当行",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A06",
+      "label": "应收款项融资",
+      "specification": "以FVOCI计量的应收票据/应收账款账面公允价值\n不得再重复减已在OCI反映的信用准备",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A07",
+      "label": "预付款项",
+      "specification": "BD(预付账款+应付账款中预付性质)\n其他方向进入应付等相应行，资产购置预付款按性质判断列报",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A08",
+      "label": "其他应收款",
+      "specification": "B(其他应收款+应收股利+已到期可收利息)经明细重分类−对应坏账准备\n实际利率法尚未到期利息包含于相关金融资产，不重复加此行",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A09",
+      "label": "存货",
+      "specification": "B(采购/在途/原料/周转/委托加工/产成品/生产成本等)+材料成本差异有符号额−商品进销差价C−存货跌价准备C\n合格流动合同履约成本净额并入；按清单去重",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A10",
+      "label": "合同资产",
+      "specification": "同一合同资产与负债净额为借的流动部分−对应合同资产减值\n不同合同不可任意净额；长期部分A32",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A11",
+      "label": "持有待售资产",
+      "specification": "B(持有待售资产)−C(持有待售减值)\n划分后从原资产行剔除，非主观一年内卖出即适用",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A12",
+      "label": "一年内到期的非流动资产",
+      "specification": "从长期债权投资/其他债权投资/长期应收等明细按到期回收计划划转净值\n不得把未来一年折旧摊销额或剩一年固定资产放入",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A13",
+      "label": "其他流动资产",
+      "specification": "已识别且未列前行的流动资产净额：适当列报的增值税借余、购买时即一年内到期债权投资、合格流动合同取得成本/应收退货成本等\n不是平衡差额",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A14",
+      "label": "流动资产合计",
+      "specification": "SUM(A01:A13)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A15",
+      "label": "债权投资",
+      "specification": "摊余成本长期债权投资B−减值C−已路由A12部分\n购买时一年内到期去A13",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A16",
+      "label": "其他债权投资",
+      "specification": "长期FVOCI债权投资账面公允价值−路由A12部分\n信用准备不重复扣资产",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A17",
+      "label": "长期应收款",
+      "specification": "B(长期应收)−C(未实现融资收益)−对应坏账准备−流动部分\n按合同摊余成本表核对",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A18",
+      "label": "长期股权投资",
+      "specification": "B(长期股权投资)−C(减值准备)\n成本法/权益法按投资主数据，不能用持股市值替代",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A19",
+      "label": "其他权益工具投资",
+      "specification": "指定FVOCI非交易性权益工具账面公允价值",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A20",
+      "label": "其他非流动金融资产",
+      "specification": "符合非流动列报的FVTPL金融资产等净值\n承接A02中符合非流动列报的长期部分",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A21",
+      "label": "投资性房地产",
+      "specification": "成本模式原值−折旧/摊销−减值，或公允价值模式账面价值\n模式不能混算",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A22",
+      "label": "固定资产",
+      "specification": "B(固定资产)−C(累计折旧)−C(固定资产减值)+B(固定资产清理)\n持售划转后剔除",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A23",
+      "label": "在建工程",
+      "specification": "B(在建工程)−减值+B(工程物资)−工程物资减值\n达到预定可使用状态按规定转固，不以发票/决算是否齐全推迟",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A24",
+      "label": "生产性生物资产",
+      "specification": "原值−累计折旧−减值",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A25",
+      "label": "油气资产",
+      "specification": "原值−累计折耗−减值",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A26",
+      "label": "使用权资产",
+      "specification": "原值−使用权累计折旧−减值\n租赁资产主数据",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A27",
+      "label": "无形资产",
+      "specification": "原值−累计摊销−减值",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A28",
+      "label": "开发支出",
+      "specification": "研发支出资本化明细未转无形资产净额\n费用化部分不得滞留",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A29",
+      "label": "商誉",
+      "specification": "已确认商誉−减值\n禁止以企业市场价值减净资产自动形成商誉",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A30",
+      "label": "长期待摊费用",
+      "specification": "尚未摊销账面余额\n一年内摊销部分仍留本行，不去A12",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A31",
+      "label": "递延所得税资产",
+      "specification": "经可抵扣暂时性差异/亏损及可实现性判断确认的账面额\n仅满足准则抵销条件时与负债抵销，并保留抵销明细",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A32",
+      "label": "其他非流动资产",
+      "specification": "合格长期合同资产/取得成本/履约成本/应收退货成本等未在其他行列示的净值\n逐明细列路由",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A33",
+      "label": "非流动资产合计",
+      "specification": "SUM(A15:A32)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "A34",
+      "label": "资产总计",
+      "specification": "A14+A33\nA19为指定FVOCI权益工具，A20为其他非流动金融资产；两者语义不同，验收必须覆盖。\n4 2 负债与权益\nID\n项目\n计算与直接来源\n适用条件与例外",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L01",
+      "label": "短期借款",
+      "specification": "C(短期借款及依法含入的应计利息明细)\n原始/剩余期限及违约情况决定列报",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L02",
+      "label": "交易性金融负债",
+      "specification": "FVTPL负债相关账面价值",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L03",
+      "label": "衍生金融负债",
+      "specification": "衍生工具负债方向公允价值\n无合法抵销不得与A03净额",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L04",
+      "label": "应付票据",
+      "specification": "C(应付票据)\n票据台账核对",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L05",
+      "label": "应付账款",
+      "specification": "BC(应付账款+预付账款相关明细)\n借余预付性质转A07",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L06",
+      "label": "预收款项",
+      "specification": "非收入准则合同负债性质的预收明细，如适用预收租金\n不得重复列同一客户预收",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L07",
+      "label": "合同负债",
+      "specification": "同合同净额为贷的流动履约义务金额\n税款按适用规定从合同负债分开，长期部分L22",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L08",
+      "label": "应付职工薪酬",
+      "specification": "C(薪酬相关明细)\n社保、公积金、福利、奖金等；长期薪酬按相应非流动分类",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L09",
+      "label": "应交税费",
+      "specification": "适当列报的应交各税费贷余\nVAT留抵/待抵扣等借方与未交/待转销项等按专门规定分流A13/A32/L13等，不任意跨税种抵销",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L10",
+      "label": "其他应付款",
+      "specification": "C(其他应付款+应付股利+已到期应付利息)经明细重分类\n实际利率尚未到期利息含相应债务账面额",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L11",
+      "label": "持有待售负债",
+      "specification": "持有待售处置组直接相关负债账面额\n不得因资产持售把无关联借款全部转入",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L12",
+      "label": "一年内到期的非流动负债",
+      "specification": "长期借款、债券、租赁负债、长期应付款等一年内须清偿部分，按到期表/流动负债准则\n违约/无权延期须专项评估",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L13",
+      "label": "其他流动负债",
+      "specification": "已识别未列前行的流动负债，如适当列报待转销项税、流动退货义务\n禁止“总资产差额”填数",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L14",
+      "label": "流动负债合计",
+      "specification": "SUM(L01:L13)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L15",
+      "label": "长期借款",
+      "specification": "借款摊余成本贷额−已转流动部分",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L16",
+      "label": "应付债券",
+      "specification": "债券摊余成本贷额−已转流动部分",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L16a",
+      "label": "其中：优先股",
+      "specification": "L16中分类为金融负债的优先股子集\n不是额外加总项",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L16b",
+      "label": "其中：永续债",
+      "specification": "L16中分类为金融负债的永续债子集\n按合同条款定债/股，不能凭名称",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L17",
+      "label": "租赁负债",
+      "specification": "租赁负债账面额−一年内到期部分\n如分设未确认融资费用则取净额，不重复扣",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L18",
+      "label": "长期应付款",
+      "specification": "C(长期应付款)−B(未确认融资费用)+C(专项应付款)−已转流动部分",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L19",
+      "label": "预计负债",
+      "specification": "非流动预计义务（含相关贷款承诺/财务担保损失准备等），流动应付退货款转L13",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L20",
+      "label": "递延收益",
+      "specification": "C(递延收益)\n一年内预计摊销部分不转L12",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L21",
+      "label": "递延所得税负债",
+      "specification": "应纳税暂时性差异等确认额\n与A31抵销仅在条件满足时",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L22",
+      "label": "其他非流动负债",
+      "specification": "未列前行的非流动负债，含适当长期合同负债等",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L23",
+      "label": "非流动负债合计",
+      "specification": "SUM(L15:L22)，排除L16a/b其中项",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "L24",
+      "label": "负债合计",
+      "specification": "L14+L23",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "E01",
+      "label": "实收资本/股本",
+      "specification": "C(实收资本/股本)，须实收或按适用准则确认，认缴未实缴不凭注册资本填数",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "E02",
+      "label": "其他权益工具",
+      "specification": "C(分类为权益的其他工具)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "E02a",
+      "label": "其中：优先股",
+      "specification": "E02中的权益类优先股",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "E02b",
+      "label": "其中：永续债",
+      "specification": "E02中的权益类永续债",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "E03",
+      "label": "资本公积",
+      "specification": "C(资本公积)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "E04",
+      "label": "减：库存股",
+      "specification": "B(库存股)，显示正数，权益合计时扣除",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "E05",
+      "label": "其他综合收益",
+      "specification": "C(其他综合收益)期末税后累计余额\n可负",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "E06",
+      "label": "专项储备",
+      "specification": "C(专项储备)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "E07",
+      "label": "盈余公积",
+      "specification": "C(盈余公积)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "E08",
+      "label": "未分配利润",
+      "specification": "C(利润分配全部明细)+C(本年利润)+未结转损益净额\n结转后同一利润不得重复计算，见第9节",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "E09",
+      "label": "所有者权益合计",
+      "specification": "E01+E02+E03−E04+E05+E06+E07+E08",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-BS-2019-A2",
+      "rowId": "E10",
+      "label": "负债和所有者权益总计",
+      "specification": "L24+E09，必须=A34\n上述到期分类并非仅比较日期；正常营业周期、可用于清偿限制、报告日是否拥有延迟清偿权等均需依据适用列报准则判断。报表重分类须从原行扣除再加目标行，保持总额不变。",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P01",
+      "label": "营业收入",
+      "specification": "MC(主营业务收入+其他业务收入)，不含销项税、不以开票/收款直接替代收入",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P02",
+      "label": "营业成本",
+      "specification": "MD(主营业务成本+其他业务成本)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P03",
+      "label": "税金及附加",
+      "specification": "MD(税金及附加)\n不含所得税费用、可抵扣进项税",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P04",
+      "label": "销售费用",
+      "specification": "MD(销售费用)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P05",
+      "label": "管理费用",
+      "specification": "MD(管理费用)减已单列P06部分，避免研发重复",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P06",
+      "label": "研发费用",
+      "specification": "费用化研发＋计入管理费用的自行开发无形资产摊销\n资本化研发不计此行，按研发项目/费用性质映射",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P07",
+      "label": "财务费用",
+      "specification": "MD(财务费用)，可负数",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P07a",
+      "label": "其中：利息费用",
+      "specification": "P07中费用化利息支出正数，不含资本化借款费用",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P07b",
+      "label": "其中：利息收入",
+      "specification": "冲减财务费用的利息收入正数\na/b是其中项，不再次参与总利润加减",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P08",
+      "label": "其他收益",
+      "specification": "MC(其他收益)\n日常相关政府补助及规定的个税扣缴手续费等",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P09",
+      "label": "投资收益",
+      "specification": "MC(投资收益)，损失负数",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P09a",
+      "label": "其中：对联营企业和合营企业的投资收益",
+      "specification": "P09中相关被投方/权益法收益子集",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P09b",
+      "label": "以摊余成本计量的金融资产终止确认收益",
+      "specification": "P09相关明细子集，损失负数，不再加一次",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P10",
+      "label": "净敞口套期收益",
+      "specification": "MC(净敞口套期损益)，损失负数",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P11",
+      "label": "公允价值变动收益",
+      "specification": "MC(公允价值变动损益)，损失负数",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P12",
+      "label": "信用减值损失",
+      "specification": "MC(信用减值损失)，计提损失为负，转回按准则为正\n若底层用“损失借方正数”需显式取负",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P13",
+      "label": "资产减值损失",
+      "specification": "MC(资产减值损失)，同上符号规则",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P14",
+      "label": "资产处置收益",
+      "specification": "MC(资产处置损益)，处置损失负\n毁损报废不机械归此行",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P15",
+      "label": "营业利润",
+      "specification": "P01−P02−P03−P04−P05−P06−P07\n+P08+P09+P10+P11+P12+P13+P14",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P16",
+      "label": "营业外收入",
+      "specification": "MC(营业外收入)\n与日常活动无关补助等，按性质分类",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P17",
+      "label": "营业外支出",
+      "specification": "MD(营业外支出)\n罚款、捐赠、毁损报废等按规定",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P18",
+      "label": "利润总额",
+      "specification": "P15+P16−P17",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P19",
+      "label": "所得税费用",
+      "specification": "MD(所得税费用)=当期所得税费用+计入损益的递延所得税费用\n非“应交税费余额”或“实际缴纳现金”",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P20",
+      "label": "净利润",
+      "specification": "P18−P19",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P20a",
+      "label": "持续经营净利润",
+      "specification": "按持续经营归属损益及税费分摊计算",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P20b",
+      "label": "终止经营净利润",
+      "specification": "按终止经营认定/归属/税费分摊计算\nP20=P20a+P20b；不将所有持售资产处置视为终止经营",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P21",
+      "label": "其他综合收益税后净额",
+      "specification": "P21a+P21b",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P21a",
+      "label": "不能重分类进损益的其他综合收益",
+      "specification": "SUM(P21a1…P21a4及依法新增子项)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P21a1",
+      "label": "重新计量设定受益计划变动额",
+      "specification": "OCI(设定受益计划,p)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P21a2",
+      "label": "权益法下不能转损益的其他综合收益",
+      "specification": "OCI(权益法不可重分类,p)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P21a3",
+      "label": "其他权益工具投资公允价值变动",
+      "specification": "OCI(FVOCI权益,p)，税后\n与留存收益之间转账不得当新收益",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P21a4",
+      "label": "企业自身信用风险公允价值变动",
+      "specification": "OCI(指定FVTPL负债自身信用,p)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P21b",
+      "label": "将重分类进损益的其他综合收益",
+      "specification": "SUM(P21b1…P21b6及依法新增子项)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P21b1",
+      "label": "权益法下可转损益的其他综合收益",
+      "specification": "OCI(权益法可重分类,p)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P21b2",
+      "label": "其他债权投资公允价值变动",
+      "specification": "OCI(FVOCI债权公允价值,p)，含按规定转出影响",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P21b3",
+      "label": "金融资产重分类计入OCI的金额",
+      "specification": "OCI(金融资产重分类,p)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P21b4",
+      "label": "其他债权投资信用减值准备",
+      "specification": "OCI(FVOCI债权信用准备,p)，不可与P12或A16重复处理",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P21b5",
+      "label": "现金流量套期储备",
+      "specification": "OCI(有效现金流套期,p)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P21b6",
+      "label": "外币财务报表折算差额",
+      "specification": "OCI(外币报表折算,p)\n不是所有财务费用汇兑损益",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P22",
+      "label": "综合收益总额",
+      "specification": "P20+P21",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P23a",
+      "label": "基本每股收益",
+      "specification": "归属于普通股股东的当期净利润÷发行在外普通股加权平均数，按适用每股收益准则\n非简单净利润/期末股本",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-PL-2019-A2",
+      "rowId": "P23b",
+      "label": "稀释每股收益",
+      "specification": "调整后归普通股利润÷含稀释性潜在普通股的加权股数\n反稀释项目排除；无适用性时标N/A而非捏造0\nP21的变动不必等于资产负债表OCI期末−期初：内部权益转结、其他调整可能影响余额，需OCI变动桥表。EPS需要股数、期间权重、工具条款等数据，三表/总账余额不足以自动产生。",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C01",
+      "label": "销售商品、提供劳务收到的现金",
+      "specification": "F(OP_SALES)：现销、收回应收、相应预收及退回净影响，通常含实际收取的销项税\n商业汇票背书抵债等非现金排除",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C02",
+      "label": "收到的税费返还",
+      "specification": "F(OP_TAX_REFUND)：实际收到合格税费返还，关联退税类型/回执",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C03",
+      "label": "收到其他与经营活动有关的现金",
+      "specification": "F(OP_OTHER_IN)：其他经营收款\n按2019格式，实际收到政府补助无论资产/收益相关均归本行",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C04",
+      "label": "经营活动现金流入小计",
+      "specification": "C01+C02+C03",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C05",
+      "label": "购买商品、接受劳务支付的现金",
+      "specification": "F(OP_PURCHASE)：实际支付采购、结清应付及预付，通常含实际支付进项税\n固定资产采购不得混入",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C06",
+      "label": "支付给职工以及为职工支付的现金",
+      "specification": "F(OP_PAYROLL)：经营职工工资福利/社保等实际支出\n企业准则不含在建工程人员工资",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C07",
+      "label": "支付的各项税费",
+      "specification": "F(OP_TAX)：经营相关实际税费\n代扣职工个税需按一致口径与薪酬拆分防重复；处置资产相关税费归对应投资净额，不一概全归此行",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C08",
+      "label": "支付其他与经营活动有关的现金",
+      "specification": "F(OP_OTHER_OUT)：经营性租金/办公差旅/其他经营支付等\n适用租赁准则的租赁负债本金另分类",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C09",
+      "label": "经营活动现金流出小计",
+      "specification": "C05+C06+C07+C08",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C10",
+      "label": "经营活动产生的现金流量净额",
+      "specification": "C04−C09",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C11",
+      "label": "收回投资收到的现金",
+      "specification": "F(INV_PRINCIPAL_IN)：收回非现金等价物投资本金，收益部分拆C12",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C12",
+      "label": "取得投资收益收到的现金",
+      "specification": "F(INV_RETURN_IN)：实际现金股利、利润、投资利息等\n银行存款利息按其经营收款口径另分类，不一律归投资",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C13",
+      "label": "处置固定资产、无形资产和其他长期资产收回的现金净额",
+      "specification": "资产处置收款−直接处置现金费用税费\n按处置交易保留gross与net，净流出按适用列报规则重分类/复核",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C14",
+      "label": "处置子公司及其他营业单位收到的现金净额",
+      "specification": "收到处置现金对价−处置主体带走的现金及等价物，需处置工作底稿\n不是投资收益或总账资产账面额",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C15",
+      "label": "收到其他与投资活动有关的现金",
+      "specification": "F(INV_OTHER_IN)，有明确投资性质，不可作为差额项",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C16",
+      "label": "投资活动现金流入小计",
+      "specification": "C11+C12+C13+C14+C15",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C17",
+      "label": "购建固定资产、无形资产和其他长期资产支付的现金",
+      "specification": "F(INV_CAPEX)：现金购建及在建工程人员工资等\n不含无现金的资产赊购/非现金租赁初始确认；借款利息按筹资类",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C18",
+      "label": "投资支付的现金",
+      "specification": "F(INV_INVEST_OUT)：购买非现金等价物股权、债券等现金支出，取得业务控制权交易拆到C19",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C19",
+      "label": "取得子公司及其他营业单位支付的现金净额",
+      "specification": "支付现金对价−取得主体现金及等价物，需并购工作底稿",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C20",
+      "label": "支付其他与投资活动有关的现金",
+      "specification": "F(INV_OTHER_OUT)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C21",
+      "label": "投资活动现金流出小计",
+      "specification": "C17+C18+C19+C20",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C22",
+      "label": "投资活动产生的现金流量净额",
+      "specification": "C16−C21",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C23",
+      "label": "吸收投资收到的现金",
+      "specification": "F(FIN_EQUITY_IN)：现金股本/资本投入，不含资产出资\n发行费用按适用列报及净额条件处理",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C24",
+      "label": "取得借款收到的现金",
+      "specification": "F(FIN_DEBT_IN)：实际借款收款\n不能用短长期借款净增加数代替",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C25",
+      "label": "收到其他与筹资活动有关的现金",
+      "specification": "F(FIN_OTHER_IN)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C26",
+      "label": "筹资活动现金流入小计",
+      "specification": "C23+C24+C25",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C27",
+      "label": "偿还债务支付的现金",
+      "specification": "F(FIN_PRINCIPAL_OUT)：偿还借款/债券本金，不含利息",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C28",
+      "label": "分配股利、利润或偿付利息支付的现金",
+      "specification": "F(FIN_DIV_INT_OUT)：实际分红利润和借款利息（包括资本化部分），不以计提数填报",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C29",
+      "label": "支付其他与筹资活动有关的现金",
+      "specification": "F(FIN_OTHER_OUT)：如适用租赁付款中规定归入筹资部分等\n拆本金、利息、短期/低价值/变量租赁支付",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C30",
+      "label": "筹资活动现金流出小计",
+      "specification": "C27+C28+C29",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C31",
+      "label": "筹资活动产生的现金流量净额",
+      "specification": "C26−C30",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C32",
+      "label": "汇率变动对现金及现金等价物的影响",
+      "specification": "期末外币现金按期末汇率本币额−期初外币现金按期初汇率本币额−期间真实外币收付按现金流折算率的净额，按现金账户汇总\n不得拿全公司汇兑损益填数",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C33",
+      "label": "现金及现金等价物净增加额",
+      "specification": "C10+C22+C31+C32",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C34",
+      "label": "期初现金及现金等价物余额",
+      "specification": "cash_scope下期初现金/等价物账面人民币额，兼顾经批准范围调整\n与上期末衔接",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "CAS-CF-2019-A2",
+      "rowId": "C35",
+      "label": "期末现金及现金等价物余额",
+      "specification": "C33+C34，必须=同一现金范围下期末台账\n与货币资金通过范围调节表核对\n来源：现金流量准则、2019一般企业格式、财政部关于在建工程人员工资的答复。购建/处置税费、代扣个税、租赁付款等细节须结合具体适用准则与合同验证，不宜写一个全国所有交易通用的对方科目规则。",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "1",
+      "label": "货币资金",
+      "specification": "B(库存现金+银行存款+其他货币资金)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "2",
+      "label": "短期投资",
+      "specification": "B(短期投资)，按成本，不套交易性金融资产公允价值规则",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "3",
+      "label": "应收票据",
+      "specification": "B(应收票据)相关未结余额",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "4",
+      "label": "应收账款",
+      "specification": "经往来明细分析的应收款借额\n贷方预收性质转34；小企业不扣坏账准备",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "5",
+      "label": "预付账款",
+      "specification": "经往来明细分析的预付款借额\n贷方应付性质转33",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "6",
+      "label": "应收股利",
+      "specification": "B(应收股利)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "7",
+      "label": "应收利息",
+      "specification": "B(应收利息)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "8",
+      "label": "其他应收款",
+      "specification": "B(其他应收款)经明细分析",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "9",
+      "label": "存货",
+      "specification": "B(材料采购/在途/原料/生产成本/库存商品/委托加工/周转/消耗性生物等)+材料成本差异有符号额−商品进销差价C\n不扣减值准备",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "10",
+      "label": "其中：原材料",
+      "specification": "9中原材料实际成本子集",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "11",
+      "label": "其中：在产品",
+      "specification": "9中在产品/生产成本子集，制造费用按政策完成分配",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "12",
+      "label": "其中：库存商品",
+      "specification": "9中库存商品成本子集",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "13",
+      "label": "其中：周转材料",
+      "specification": "9中周转材料子集",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "14",
+      "label": "其他流动资产",
+      "specification": "未列前行流动资产，包括1年内到期的非流动资产\n按明细路由",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "15",
+      "label": "流动资产合计",
+      "specification": "SUM(1…9)+14，不再加10…13",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "16",
+      "label": "长期债券投资",
+      "specification": "B(长期债券投资)经到期分类，1年内到期部分转14",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "17",
+      "label": "长期股权投资",
+      "specification": "B(长期股权投资)，小企业按成本法，不套权益法份额计算",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "18",
+      "label": "固定资产原价",
+      "specification": "B(固定资产)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "19",
+      "label": "减：累计折旧",
+      "specification": "C(累计折旧)，正数显示",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "20",
+      "label": "固定资产账面价值",
+      "specification": "18−19",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "21",
+      "label": "在建工程",
+      "specification": "B(在建工程)，达到可使用状态及转固按小企业准则处理",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "22",
+      "label": "工程物资",
+      "specification": "B(工程物资)，不并入21",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "23",
+      "label": "固定资产清理",
+      "specification": "B(固定资产清理)，贷余负数，与20分列",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "24",
+      "label": "生产性生物资产",
+      "specification": "B(生产性生物资产)−C(其累计折旧)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "25",
+      "label": "无形资产",
+      "specification": "B(无形资产)−C(累计摊销)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "26",
+      "label": "开发支出",
+      "specification": "B(研发支出资本化未完结部分)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "27",
+      "label": "长期待摊费用",
+      "specification": "尚未摊销的账面余额，依据本准则明细分析",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "28",
+      "label": "其他非流动资产",
+      "specification": "其他已识别非流动资产",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "29",
+      "label": "非流动资产合计",
+      "specification": "16+17+20+21+22+23+24+25+26+27+28，不能重复加18/19",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "30",
+      "label": "资产总计",
+      "specification": "15+29",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "31",
+      "label": "短期借款",
+      "specification": "C(短期借款本金)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "32",
+      "label": "应付票据",
+      "specification": "C(应付票据)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "33",
+      "label": "应付账款",
+      "specification": "经明细分析的应付贷额，包括预付账款贷方应付性质\n借方预付性质转5",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "34",
+      "label": "预收账款",
+      "specification": "经明细分析的流动预收贷额，包括应收账款贷方预收性质\n借方应收性质转4；超过1年期预收贷余按附录转45",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "35",
+      "label": "应付职工薪酬",
+      "specification": "C(应付职工薪酬)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "36",
+      "label": "应交税费",
+      "specification": "小企业附录默认C(应交税费)，借余以负数列示\n不能直接复制企业准则强制移资产规则。特定VAT明细专门列报的适用性单独审核，重分类须有依据及版本",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "37",
+      "label": "应付利息",
+      "specification": "C(应付利息)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "38",
+      "label": "应付利润",
+      "specification": "C(应付利润)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "39",
+      "label": "其他应付款",
+      "specification": "C(其他应付款)经明细分析",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "40",
+      "label": "其他流动负债",
+      "specification": "其他流动负债，含按准则应划出的1年内到期非流动负债",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "41",
+      "label": "流动负债合计",
+      "specification": "SUM(31…40)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "42",
+      "label": "长期借款",
+      "specification": "C(长期借款)−已划40部分",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "43",
+      "label": "长期应付款",
+      "specification": "C(长期应付款)经明细分析−已划40部分",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "44",
+      "label": "递延收益",
+      "specification": "C(递延收益)，适用政府补助等\n按本准则及现行规定判断",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "45",
+      "label": "其他非流动负债",
+      "specification": "其他已识别非流动负债",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "46",
+      "label": "非流动负债合计",
+      "specification": "42+43+44+45",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "47",
+      "label": "负债合计",
+      "specification": "41+46",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "48",
+      "label": "实收资本/股本",
+      "specification": "C(实收资本/股本)，不按认缴未实缴数虚增\n适用中外合作归还投资另增抵减行",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "49",
+      "label": "资本公积",
+      "specification": "C(资本公积)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "50",
+      "label": "盈余公积",
+      "specification": "C(盈余公积)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "51",
+      "label": "未分配利润",
+      "specification": "利润分配余额及尚未转入的本年利润按第9节统一口径\n年末完成结转后为C(利润分配)；亏损负数",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "52",
+      "label": "所有者权益合计",
+      "specification": "48+49+50+51−适用已归还投资抵减行",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-BS-2011",
+      "rowId": "53",
+      "label": "负债和所有者权益总计",
+      "specification": "47+52=30\n小企业税费特别提示：财政部2023-12-04官方答复再次明确，小企业应交税费借余可负数列报。财会〔2016〕22号另有VAT明细列报要求，系统须保存税种明细并让会计确认具体适用衔接，不把“负数一律错误”或“所有小企业VAT均直接套CAS列报”写成默认硬规则。财政部小企业税费答复、VAT专门规定第三/四部分。",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "1",
+      "label": "营业收入",
+      "specification": "MC(主营业务收入+其他业务收入)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "2",
+      "label": "营业成本",
+      "specification": "MD(主营业务成本+其他业务成本)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "3",
+      "label": "税金及附加（原营业税金及附加）",
+      "specification": "MD(税金及附加)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "4",
+      "label": "其中：消费税",
+      "specification": "3中消费税明细",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "5",
+      "label": "其中：营业税（历史模板）",
+      "specification": "仅历史期间/旧事项的适用调整\n2026普通新业务不得由旧表推导新增营业税",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "6",
+      "label": "其中：城市维护建设税",
+      "specification": "3中城建税明细",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "7",
+      "label": "其中：资源税",
+      "specification": "3中资源税明细",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "8",
+      "label": "其中：土地增值税",
+      "specification": "3中土地增值税明细",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "9",
+      "label": "其中：城镇土地使用税、房产税、车船税、印花税",
+      "specification": "3中相应四类之和\n可内部继续拆分",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "10",
+      "label": "其中：教育费附加、矿产资源补偿费、排污费（历史表标签）",
+      "specification": "按有效期匹配实际适用子项\n环保税等按现行规范配置，不把不同税费直接改名替代；历史废止项不新生计提",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "11",
+      "label": "销售费用",
+      "specification": "MD(销售费用)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "12",
+      "label": "其中：商品维修费",
+      "specification": "11中维修费子集",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "13",
+      "label": "其中：广告费和业务宣传费",
+      "specification": "11中广告宣传子集",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "14",
+      "label": "管理费用",
+      "specification": "MD(管理费用)，含费用化研究费用，不另照搬企业准则P06再扣",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "15",
+      "label": "其中：开办费",
+      "specification": "14中开办费子集",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "16",
+      "label": "其中：业务招待费",
+      "specification": "14中业务招待费子集，税前限额另在纳税调整，不修改会计数",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "17",
+      "label": "其中：研究费用",
+      "specification": "14中费用化研究费用子集",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "18",
+      "label": "财务费用",
+      "specification": "MD(财务费用)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "19",
+      "label": "其中：利息费用（收入负号）",
+      "specification": "18中利息费用−利息收入\n不同于企业准则分设两个正数其中项",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "20",
+      "label": "投资收益",
+      "specification": "MC(投资收益)，损失负数",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "21",
+      "label": "营业利润",
+      "specification": "1−2−3−11−14−18+20",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "22",
+      "label": "营业外收入",
+      "specification": "MC(营业外收入)，按小企业准则适用项目",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "23",
+      "label": "其中：政府补助",
+      "specification": "22中政府补助收益，不等于实际收款，也不机械引入企业准则“其他收益”",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "24",
+      "label": "营业外支出",
+      "specification": "MD(营业外支出)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "25",
+      "label": "其中：坏账损失",
+      "specification": "24中实际确认坏账损失，不是坏账准备计提",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "26",
+      "label": "其中：无法收回长期债券投资损失",
+      "specification": "24相应子集",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "27",
+      "label": "其中：无法收回长期股权投资损失",
+      "specification": "24相应子集",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "28",
+      "label": "其中：自然灾害等不可抗力损失",
+      "specification": "24相应子集",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "29",
+      "label": "其中：税收滞纳金",
+      "specification": "24相应子集\n税务不可扣除调整另行记录",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "30",
+      "label": "利润总额",
+      "specification": "21+22−24",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "31",
+      "label": "所得税费用",
+      "specification": "MD(所得税费用)，按本准则应付税款口径，不启用递延所得税模板",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-PL-2011",
+      "rowId": "32",
+      "label": "净利润",
+      "specification": "30−31\n其中项不重复参加合计。原附录有若干“大于等于其中项合计”校验；当存在冲回、负费用、收益等情况应按有符号数据和业务复核，不能将绝对值比较作为无条件硬拦截。",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "1",
+      "label": "销售产成品、商品、提供劳务收到的现金",
+      "specification": "F(SBE_OP_SALES)，实际销售相关收款/退款",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "2",
+      "label": "收到其他与经营活动有关的现金",
+      "specification": "F(SBE_OP_OTHER_IN)，包括按适用小企业规则分类的其他经营现金",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "3",
+      "label": "购买原材料、商品、接受劳务支付的现金",
+      "specification": "F(SBE_OP_PURCHASE)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "4",
+      "label": "支付的职工薪酬",
+      "specification": "F(SBE_OP_PAYROLL)，包括在建工程、无形资产开发人员薪酬，与企业准则区分",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "5",
+      "label": "支付的税费",
+      "specification": "F(SBE_OP_TAX)，按本准则现金流性质分析，不重复计资产处置净额中的税费",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "6",
+      "label": "支付其他与经营活动有关的现金",
+      "specification": "F(SBE_OP_OTHER_OUT)",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "7",
+      "label": "经营活动现金流量净额",
+      "specification": "1+2−3−4−5−6",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "8",
+      "label": "收回短期投资、长期债券投资和长期股权投资收到的现金",
+      "specification": "本金实际收回\n利息/股利拆9",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "9",
+      "label": "取得投资收益收到的现金",
+      "specification": "投资现金股利/利润/利息实际收款",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "10",
+      "label": "处置固定资产、无形资产和其他非流动资产收回的现金净额",
+      "specification": "处置收款−相关处置现金税费",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "11",
+      "label": "短期投资、长期债券投资和长期股权投资支付的现金",
+      "specification": "相关投资实际支付",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "12",
+      "label": "购建固定资产、无形资产和其他非流动资产支付的现金",
+      "specification": "购建现金\n不含工程/开发人员薪酬，也不含资本化借款利息",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "13",
+      "label": "投资活动现金流量净额",
+      "specification": "8+9+10−11−12",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "14",
+      "label": "取得借款收到的现金",
+      "specification": "现金借款收入",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "15",
+      "label": "吸收投资者投资收到的现金",
+      "specification": "现金资本投入",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "16",
+      "label": "偿还借款本金支付的现金",
+      "specification": "借款本金实际偿还",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "17",
+      "label": "偿还借款利息支付的现金",
+      "specification": "利息实际支付，包括资本化利息",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "18",
+      "label": "分配利润支付的现金",
+      "specification": "实际支付利润",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "19",
+      "label": "筹资活动现金流量净额",
+      "specification": "14+15−16−17−18",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "20",
+      "label": "现金净增加额",
+      "specification": "7+13+19（标准模板\n复杂外币等需单独调节并复核适用输出）",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "21",
+      "label": "加：期初现金余额",
+      "specification": "同范围期初现金台账余额",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    },
+    {
+      "template": "SBE-CF-2011",
+      "rowId": "22",
+      "label": "期末现金余额",
+      "specification": "20+21\n与现金范围期末余额调节核对",
+      "reviewStatus": "UNREVIEWED",
+      "source": "requirements-v3-book-02",
+      "calculationStatus": "MISSING"
+    }
+  ]
+}
