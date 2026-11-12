@@ -20,8 +20,10 @@
 lumira-finance/
   platform/lumira-next/       基座 submodule，由 Git 固定到一个提交
   plugins/                   本产品拥有的财务插件源码
-  scripts/                   产品组装工具
+  deploy/                    独立生产容器编排、只读发布镜像与边缘反代配置
+  scripts/                   产品组装、发布激活、人员导入与备份恢复演练工具
   docs/platform-upgrades.md  基座升级与验证流程
+  docs/deployment-and-operations.md  生产部署、保数据升级与灾备运维手册
   .runtime/                  本机配置、独立构建工作区及临时输出（不提交）
 ```
 
@@ -102,3 +104,11 @@ pnpm plugins:build
   - 封闭 OpenAPI 校验：677 份实际 JSON 通过封闭 Schema 校验（0 开放 Schema，0 未匹配路由，0 错误）。
   - 只读 SQL 完整性：12 项核心不变量检查全部通过（12/12），0 异常。
 - **100% 诚实外部边界声明**：税局直联/税款缴纳/乐企开票/银企直联保持 `NOT_VERIFIED` / `NOT_ASSESSED`；客户端统一为 `WEB_ONLY_CLIENT`；云灾备保持 `LOCAL_DRILL_ONLY`；客户往来严格执行 `ANTI_CRM_ENFORCED`；AI 助手保持 `DRAFT_COPILOT_ONLY`。
+
+## 生产独立部署、备份恢复演练与运维交付
+
+本仓库提供与上游 `lumira-next` 及开发/QA 环境完全物理隔离的生产级容器编排与运维自动化套件（详见 [生产部署与运维操作手册](docs/deployment-and-operations.md)）：
+- **五服务加固容器拓扑（`deploy/compose.yml`）**：包含 `edge`（Caddy 边缘反代，默认宿主机回环 `127.0.0.1:8030`、独立网段 `172.30.79.0/24`、阻断 `/actuator/*` 并清洗伪造转发头）、`web`（构建期动态内联脚本 SHA-256 CSP 静态服务）、`server`（JDK 25 非特权 `10001:10001`、只读锁定 `/app/plugins` 封装 `finance@0.24.2`）、`office-worker`（`read_only: true`、`cap_drop: ALL`、`office-internal` 纯内网隔离文档转换沙箱）与 `database`（PostgreSQL 18.6 专属财务库 `lumira_finance`，承载账表及文件/原件二进制唯一事实源）。环境变量模板见 `.env.example`（`LUMIRA_SECRET_KEYS` 须与数据库备份异地分库独立保管）。
+- **受控激活与 `PRESERVE` 升级编排（`scripts/provision-finance-release.mjs`）**：支持首次上线引导改密、`LUMIRA_PLUGINS_FIXED_GRAPH` 两阶段激活、强制锁定 `PRESERVE` 保数据升级及 `--verify-only` 生产就绪与制品 SHA-256 核验（禁止命令行明文传密）。
+- **无人值守备份与五项硬指标恢复演练（`scripts/finance-backup-restore-drill.mjs`）**：支持原生客户端或 `--docker-container` 执行 `0600` 权限 `pg_dump -Fc` 快照、隔离临时库恢复、全表行数 1:1 比对、B52 与 `V1`–`V37` 迁移零失败校验、平台文件分块及财务电子原件逐字节 SHA-256 校验、已记账凭证借贷平衡核验，并支持登记 `PLT02`（`LOCAL_DRILL_ONLY`）演练审计台账。
+- **静态配置护栏校验**：运行 `pnpm verify:deploy`（`scripts/verify-deployment-config.mjs`）与 `pnpm test:ops` 执行部署隔离、凭据卫生及运维工具自动化回归。

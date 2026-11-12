@@ -10,6 +10,11 @@
   "scripts": {
     "workspace:prepare": "node scripts/prepare-workspace.mjs",
     "test:finance": "node scripts/test-finance-domain.mjs",
-    "test:person-bootstrap": "node --test --test-concurrency=1 scripts/bootstrap-finance-person-directory.test.mjs"
+    "test:person-bootstrap": "node --test --test-concurrency=1 scripts/bootstrap-finance-person-directory.test.mjs",
+    "test:ops": "node --test --test-concurrency=1 scripts/bootstrap-finance-person-directory.test.mjs scripts/finance-backup-restore-drill.test.mjs scripts/provision-finance-release.test.mjs scripts/verify-deployment-config.test.mjs",
+    "verify:deploy": "node scripts/verify-deployment-config.mjs",
+    "verify:migrations": "node scripts/verify-finance-migrations.mjs",
+    "ops:drill": "node scripts/finance-backup-restore-drill.mjs",
+    "ops:provision": "node scripts/provision-finance-release.mjs"
   }
 }

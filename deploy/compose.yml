@@ -1,0 +1,126 @@
+name: lumira-finance
+
+services:
+  database:
+    image: postgres:18.6
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${LUMIRA_FINANCE_DB_NAME:-lumira_finance}
+      POSTGRES_USER: ${LUMIRA_FINANCE_DB_USER:-lumira_finance_app}
+      POSTGRES_PASSWORD: ${LUMIRA_DB_PASSWORD:?Set dedicated finance database password}
+    volumes:
+      - finance_postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U \"${LUMIRA_FINANCE_DB_USER:-lumira_finance_app}\" -d \"${LUMIRA_FINANCE_DB_NAME:-lumira_finance}\""]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  office-worker:
+    restart: unless-stopped
+    build:
+      context: ..
+      dockerfile: deploy/office-worker.Dockerfile
+    environment:
+      LUMIRA_OFFICE_WORKER_TOKEN: ${LUMIRA_OFFICE_WORKER_TOKEN:?Set dedicated Office worker token}
+      LUMIRA_OFFICE_WORKER_TEST_MODE: "false"
+    mem_limit: 1g
+    memswap_limit: 1g
+    cpus: "1.0"
+    pids_limit: 64
+    read_only: true
+    tmpfs:
+      - /tmp:size=128m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: [CMD, java, -XX:ActiveProcessorCount=1, -XX:+UseSerialGC, -XX:CICompilerCount=2, -Xss512k, -Xms8m, -Xmx32m, -XX:MaxMetaspaceSize=64m, -jar, /app/app.jar, --office-worker-healthcheck]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    networks:
+      - office-internal
+
+  server:
+    restart: unless-stopped
+    build:
+      context: ..
+      dockerfile: deploy/server.Dockerfile
+    environment:
+      LUMIRA_DB_URL: jdbc:postgresql://database:5432/${LUMIRA_FINANCE_DB_NAME:-lumira_finance}
+      LUMIRA_DB_USER: ${LUMIRA_FINANCE_DB_USER:-lumira_finance_app}
+      LUMIRA_DB_PASSWORD: ${LUMIRA_DB_PASSWORD:?Set dedicated finance database password}
+      LUMIRA_BOOTSTRAP_PASSWORD: ${LUMIRA_BOOTSTRAP_PASSWORD:?Set initial administrator bootstrap password}
+      LUMIRA_OFFICE_WORKER_URL: http://office-worker:18091
+      LUMIRA_OFFICE_WORKER_TOKEN: ${LUMIRA_OFFICE_WORKER_TOKEN:?Set dedicated Office worker token}
+      LUMIRA_SECRET_KEYS: ${LUMIRA_SECRET_KEYS:?Set LUMIRA_SECRET_KEYS (e.g. primary=<base64-32-bytes>)}
+      LUMIRA_SECRET_ACTIVE_KEY: ${LUMIRA_SECRET_ACTIVE_KEY:-primary}
+      LUMIRA_PLUGINS_FIXED_GRAPH: ${LUMIRA_PLUGINS_FIXED_GRAPH:-true}
+      LUMIRA_METRICS_TOKEN: ${LUMIRA_METRICS_TOKEN:-}
+      LUMIRA_TRUSTED_PROXY_ADDRESSES: ${LUMIRA_FINANCE_EDGE_ADDRESS:-172.30.79.2}
+      LUMIRA_COOKIE_SECURE: ${LUMIRA_COOKIE_SECURE:?Set LUMIRA_COOKIE_SECURE=true for HTTPS (false only for local HTTP)}
+      LUMIRA_AUDIT_RETENTION: ${LUMIRA_AUDIT_RETENTION:-365d}
+      LUMIRA_DELIVERY_TERMINAL_RETENTION: ${LUMIRA_DELIVERY_TERMINAL_RETENTION:-30d}
+    healthcheck:
+      test:
+        - CMD
+        - bash
+        - -c
+        - exec 3<>/dev/tcp/127.0.0.1/8090 && printf 'GET /actuator/health/readiness HTTP/1.0\r\n\r\n' >&3 && grep -q ' 200 ' <&3
+      interval: 10s
+      timeout: 3s
+      retries: 12
+      start_period: 60s
+    depends_on:
+      database:
+        condition: service_healthy
+      office-worker:
+        condition: service_healthy
+    volumes:
+      - finance_files_data:/data/files
+    networks:
+      - default
+      - proxy
+      - office-internal
+
+  web:
+    restart: unless-stopped
+    build:
+      context: ..
+      dockerfile: deploy/web.Dockerfile
+    networks:
+      - proxy
+    depends_on:
+      - server
+
+  edge:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "${LUMIRA_FINANCE_BIND_HOST:-127.0.0.1}:${LUMIRA_FINANCE_EDGE_PORT:-8030}:8010"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    networks:
+      proxy:
+        ipv4_address: ${LUMIRA_FINANCE_EDGE_ADDRESS:-172.30.79.2}
+    depends_on:
+      web:
+        condition: service_started
+      server:
+        condition: service_healthy
+
+networks:
+  office-internal:
+    internal: true
+  proxy:
+    ipam:
+      config:
+        - subnet: ${LUMIRA_FINANCE_PROXY_SUBNET:-172.30.79.0/24}
+          ip_range: ${LUMIRA_FINANCE_PROXY_POOL:-172.30.79.128/25}
+
+volumes:
+  finance_postgres_data:
+  finance_files_data:

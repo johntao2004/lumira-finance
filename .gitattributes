@@ -1,2 +1,7 @@
 # Published finance migration hashes cover their exact bytes, including line endings.
 plugins/finance/migrations/*.sql -text
+
+# Container deployment and environment templates must keep LF line endings across platforms.
+deploy/** text eol=lf
+.dockerignore text eol=lf
+.env.example text eol=lf
