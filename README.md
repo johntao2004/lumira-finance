@@ -1,6 +1,6 @@
 # Lumira Finance
 
-独立财务产品仓库，复用 Lumira Next 基座，通过固定提交和显式升级持续接收基座更新。
+Lumira Next 的独立财务发行版，通过固定提交和显式升级持续接收基座更新。
 
 当前已安装并验收候选版本 `finance@0.24.2`，完成全量 84 项 V4 需求的保数据升级验收，覆盖 37 项迁移、336 张业务表与 43 个控制器。实际范围、验证入口和边界见 [财务插件说明](plugins/finance/README.md)、[需求映射](docs/finance-requirements.md) 与 [V4 差异](docs/finance-v4-gap-analysis.md)。
 
@@ -33,13 +33,19 @@ lumira-finance/
 
 ## 获取项目
 
-推送到产品自己的远程仓库后，使用 `git clone --recurse-submodules <财务仓库地址>` 获取。已有克隆执行：
+使用有权读取财务仓库和基座仓库的 GitHub 账号克隆。
+
+```powershell
+git clone --recurse-submodules https://github.com/johntao2004/lumira-finance.git
+```
+
+在已有克隆中补齐子模块。
 
 ```powershell
 git submodule update --init --recursive
 ```
 
-基座上游为 `https://github.com/johntao2004/lumira-next.git`；访问者需要拥有相应权限。本仓库初始只在本地创建，尚未配置产品远程地址。
+基座上游为 [johntao2004/lumira-next](https://github.com/johntao2004/lumira-next)。
 
 ## 组装开发与构建工作区
 

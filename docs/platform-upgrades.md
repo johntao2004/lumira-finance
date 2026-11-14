@@ -40,6 +40,9 @@ git commit -m "chore: upgrade Lumira platform"
 
 尚未部署时可以恢复候选 gitlink并重新执行 `git submodule update --init --recursive`。已经部署后，回退源码或镜像不代表数据库也已回退；若执行过结构或数据变更，必须依据该次发布的兼容性与恢复方案处理。
 
-## 后续自动化
+## GitHub 验证与发版
 
-产品远程仓库配置好后，可增加定期检测上游版本、创建升级 PR、运行隔离兼容性验证的 CI。自动检测和提出升级不等于自动合并或自动更新生产数据库。当前尚未配置远程仓库、CI 或定时更新。
+- 为指向 `main` 的同仓库 PR 和 `main` 推送运行 `Finance CI`。它检出已提交指针锁定的基座，检查工作区组装、迁移校验和、部署配置及运维测试。基座升级 PR 仍需完成上述构建和隔离环境验收。
+- 在财务仓库的 Actions secrets 中配置 `LUMIRA_PLATFORM_READ_TOKEN`。使用有到期日期的 fine-grained PAT，选择 `lumira-finance` 和 `lumira-next` 两个仓库，仓库权限设为 `Contents: Read-only`，到期前轮换。向同仓库分支授予写权限时，也应允许该贡献者读取基座。
+- 私有仓库套餐支持 Rulesets 时，为 `main` 启用 PR、`Verify finance` 必需检查和禁止强推。
+- 完成验收后，在财务仓库对已验收的产品提交创建版本 tag 和 GitHub Release。发行说明记录财务版本、产品提交、基座提交和实际发布制品的 SHA-256。生产部署显式选择对应版本及制品摘要。
