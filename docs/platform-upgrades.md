@@ -42,7 +42,6 @@ git commit -m "chore: upgrade Lumira platform"
 
 ## GitHub 验证与发版
 
-- 为指向 `main` 的同仓库 PR 和 `main` 推送运行 `Finance CI`。它检出已提交指针锁定的基座，检查工作区组装、迁移校验和、部署配置及运维测试。基座升级 PR 仍需完成上述构建和隔离环境验收。
-- 在财务仓库的 Actions secrets 中配置 `LUMIRA_PLATFORM_READ_TOKEN`。使用有到期日期的 fine-grained PAT，选择 `lumira-finance` 和 `lumira-next` 两个仓库，仓库权限设为 `Contents: Read-only`，到期前轮换。向同仓库分支授予写权限时，也应允许该贡献者读取基座。
-- 私有仓库套餐支持 Rulesets 时，为 `main` 启用 PR、`Verify finance` 必需检查和禁止强推。
+- 为指向 `main` 的 PR（包括 Fork）和 `main` 推送运行 `Finance CI`。它检出已提交指针锁定的公开基座，检查工作区组装、迁移校验和、部署配置及运维测试。检出使用 Actions 自带的只读权限。基座升级 PR 仍需完成上述构建和隔离环境验收。
+- `main` 通过 PR 合并，要求 `Verify finance` 通过并禁止强推。
 - 完成验收后，在财务仓库对已验收的产品提交创建版本 tag 和 GitHub Release。发行说明记录财务版本、产品提交、基座提交和实际发布制品的 SHA-256。生产部署显式选择对应版本及制品摘要。
