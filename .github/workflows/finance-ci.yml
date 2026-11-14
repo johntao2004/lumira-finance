@@ -1,0 +1,55 @@
+name: Finance CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: finance-ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Verify finance
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check platform checkout credential
+        env:
+          LUMIRA_PLATFORM_READ_TOKEN: ${{ secrets.LUMIRA_PLATFORM_READ_TOKEN }}
+        run: |
+          if [ -z "$LUMIRA_PLATFORM_READ_TOKEN" ]; then
+            echo "::error::Set the LUMIRA_PLATFORM_READ_TOKEN Actions secret for the private platform submodule."
+            exit 1
+          fi
+
+      - name: Check out finance and its pinned platform
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          token: ${{ secrets.LUMIRA_PLATFORM_READ_TOKEN }}
+          submodules: recursive
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+
+      - name: Assemble the finance workspace
+        run: node scripts/prepare-workspace.mjs
+
+      - name: Verify published migration checksums
+        run: node scripts/verify-finance-migrations.mjs
+
+      - name: Verify deployment configuration
+        run: node scripts/verify-deployment-config.mjs
+
+      - name: Run operations tests
+        run: npm run test:ops
