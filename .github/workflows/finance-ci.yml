@@ -17,23 +17,12 @@ concurrency:
 jobs:
   verify:
     name: Verify finance
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Check platform checkout credential
-        env:
-          LUMIRA_PLATFORM_READ_TOKEN: ${{ secrets.LUMIRA_PLATFORM_READ_TOKEN }}
-        run: |
-          if [ -z "$LUMIRA_PLATFORM_READ_TOKEN" ]; then
-            echo "::error::Set the LUMIRA_PLATFORM_READ_TOKEN Actions secret for the private platform submodule."
-            exit 1
-          fi
-
       - name: Check out finance and its pinned platform
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          token: ${{ secrets.LUMIRA_PLATFORM_READ_TOKEN }}
           submodules: recursive
           persist-credentials: false
 

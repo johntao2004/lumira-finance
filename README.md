@@ -33,7 +33,7 @@ lumira-finance/
 
 ## 获取项目
 
-使用有权读取财务仓库和基座仓库的 GitHub 账号克隆。
+财务仓库和基座仓库均可公开读取。使用以下命令同时克隆财务代码和锁定版本的基座源码。
 
 ```powershell
 git clone --recurse-submodules https://github.com/johntao2004/lumira-finance.git
